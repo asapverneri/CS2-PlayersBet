@@ -1,0 +1,16 @@
+{
+  "bet.win": "{green}[Betti] {default}Voitit ${0} sinun ${1} betistä!",
+  "bet.win.vip": "Voitit ${0} VIP bonuksella sinun ${1} betistä!",
+  "bet.lost": "{green}[Betti] {default}Damn.. häivisit betin..",
+
+  "bet.usage": "{green}[Betti] {default}Käyttö: {0} <t/ct> <amount/half/all>",
+
+  "bet.spectate": "{green}[Betti] {default}Et voi betata specissä...",
+  "bet.alive": "{green}[Betti] {default}Et voi betata kuolleena..",
+  "bet.round": "{green}[Betti] {default}Et voi betata nyt..",
+  "bet.toomuch": "{green}[Betti] {default}Broidii täs on liikaa rahaa..",
+  "bet.alreadybet": "{green}[Betti] {default}Olet jo asettanut betin tällä kierroksella.",
+  "bet.cantnow": "{green}[Betti] {default}Et voi betata nyt..",
+  "bet.estimated": "{green}[Betti] {default}Voitat ${0} Jos ${1} bettisi osuu."
+
+}

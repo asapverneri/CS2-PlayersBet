@@ -1,6 +1,7 @@
 ﻿using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Attributes.Registration;
+using CounterStrikeSharp.API.Modules.Admin;
 using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Utils;
 using Microsoft.Extensions.Logging;
@@ -50,9 +51,17 @@ public class PlayersBet: BasePlugin
 
 			if (currentBet.Value.team == winningTeam)
 			{
-				int total = currentBet.Value.earnings + currentBet.Value.amountBet;
-				player.AddMoney(total);
-                player.PrintToChat($"{Localizer["bet.win", currentBet.Value.earnings, currentBet.Value.amountBet]}");
+				bool isVip = AdminManager.PlayerHasPermissions(player, "@css/vip") || AdminManager.PlayerHasPermissions(player, "@peliluola/vipplus");
+                float vipMultiplier = isVip ? 1.2f : 1.0f;
+
+                int totalEarnings = (int)(currentBet.Value.earnings * vipMultiplier);
+                int total = totalEarnings + currentBet.Value.amountBet;
+                player.AddMoney(total);
+
+                if (isVip)
+                    player.PrintToChat($"{Localizer["bet.win.vip", totalEarnings, currentBet.Value.amountBet]}");
+                else
+                    player.PrintToChat($"{Localizer["bet.win", currentBet.Value.earnings, currentBet.Value.amountBet]}");
 
             }
 			else
@@ -115,7 +124,7 @@ public class PlayersBet: BasePlugin
 			return;
 		}
 
-		if (player.PawnIsAlive)
+		if (!player.PawnIsAlive)
 		{
             player.PrintToChat($"{Localizer["bet.alive"]}");
             return;

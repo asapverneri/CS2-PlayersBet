@@ -1,5 +1,6 @@
 {
   "bet.win": "{green}[PlayerBets] {default}You won {0} for your {1} bet!",
+  "bet.win.vip": "You won {0} (VIP Bonus) for your {1} bet!",
   "bet.lost": "{green}[PlayerBets] {default}You lost your bet...",
 
   "bet.usage": "{green}[PlayerBets] {default}Usage: {0} <t/ct> <amount/half/all>",
